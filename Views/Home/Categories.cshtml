@@ -1,0 +1,12 @@
+﻿@using ASP_SHOP.Models;
+@model IEnumerable<Category>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (Category item in Model)
+{
+    <div>@item.CategoryName</div>
+}
+

@@ -1,0 +1,111 @@
+﻿@using ASP_SHOP.Models
+@using ASP_SHOP.Utils
+@model HomeIndexViewModel 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="filters" action="/Home/Index">
+    <div class="filters__categories">
+        <img src="~/Files/Images/computer_dark.svg" class="img"/>
+        <img src="~/Files/Images/smartphones_dark.svg" class="img"/>
+        <img src="~/Files/Images/washer_dark.svg" class="img"/>
+        <img src="~/Files/Images/bath_dark.svg" class="img"/>
+        <img src="~/Files/Images/drill_dark.svg" class="img"/>
+        <img src="~/Files/Images/tools_dark.svg" class="img"/>
+        <img src="~/Files/Images/sofa_dark.svg" class="img"/>
+        <img src="~/Files/Images/badminton_dark.svg" class="img"/>
+        <img src="~/Files/Images/stationery_dark.svg" class="img"/>
+        <img src="~/Files/Images/clothes_dark.svg" class="img"/>
+    </div>
+    <div class="filters__text">
+        <div class="filters__header">
+            FILTERS
+        </div>
+        <ul>
+            @foreach (Category item in Model.Categories)
+            {
+                <li>
+                    <div>
+                        <input type="checkbox" value="@item.CategoryName" class="filters__checkbox" , id="@item.Id" name="checkboxes" checked="@Model.filterInfo.SelectedCategories.Contains(item.CategoryName)" />
+                        <label for="@item.Id"><p>@item.CategoryName</p></label>
+                    </div>
+                </li>
+            }
+        </ul>
+
+        <div class="filters__header">
+            SORT
+        </div>
+        <select class="filters__select" name="sortOrder">
+            @foreach (SortState item in Enum.GetValues(typeof(SortState)))
+            {
+                if (@item == Model.sortInfo.Current)
+                {
+                    <option selected>@item</option>
+                }
+
+                else
+                {
+                    <option>@item</option>
+                }
+
+
+            }
+        </select>
+
+        <div class="filters__submit">
+            <input type="submit" class="button" value="FIND" />
+            @Html.ActionLink("SHOW ALL", "Index", "Home", new { @class = "button" })
+        </div>
+
+    </div>
+    <div class="filters__title">
+        F I L T E R S
+    </div>
+</form>
+    <div class="container">
+        <div class="pagination">
+            @Html.PageBuilder(Model.PageInfo, x => Url.Action("Index", new { page = x, checkboxes = Model.filterInfo.SelectedCategories.ToArray(), sortOrder=Model.sortInfo.Current}))
+        </div>
+        <div class="goods">
+            @foreach (Good good in Model.Goods)
+            {
+            <div class="goods__info">
+                <div class="goods__item">
+                    <div class="goods__preview" style="background-image:url('@good.Images.First(i=>i.IsLogo).Path')"></div>
+                    <div class="goods__category">@Model.Categories.First(c => c.Id == good.CategoryId).CategoryName</div>
+                    <div class="goods__title"><p>@good.Title</p></div>
+                    <div class="goods__price">@good.Price$</div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="pagination">
+            @Html.PageBuilder(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+        </div>
+    </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".filters").on("click", function (e) {
+                console.log(e);
+                if (e.target.localName == "div" || e.target.localName == "img") {
+                    $(this).toggleClass("filters--active");
+                    if ($(this).hasClass("filters--active")) {
+                        $(".filters__categories").hide();
+                        $(".filters__text").show();
+                    }
+
+                    else {
+                        $(".filters__categories").show();
+                        $(".filters__text").hide();
+                    }
+                }
+                
+            })
+        })
+    </script>
+    }

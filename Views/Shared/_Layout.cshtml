@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href=@Url.Content("~/Content/CSS/Style.css") rel="stylesheet" />
+    @*font-family: 'Roboto', sans-serif;*@
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    @*font-family: 'Fredoka One', cursive;*@
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    @*font-family: 'Sigmar One', cursive;*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <header class="header">
+        <div class="header__body">
+            <div class="header__main">
+                <a href="/Home/Index" class="header__logo">
+                    <img src="~/Files/Images/logo.jpg" />
+                </a>
+                <div class="header__title">
+                    <a href="/Home/Index">ITSTEP</a>
+                </div>
+            </div>
+            <div class="header__search">
+                <div class="header__search-left">
+                    <select>
+                        <option>option1</option>
+                        <option>option1option1</option>
+                        <option>option1option1</option>
+                        <option>option1</option>
+                        <option>option1</option>
+                    </select>
+                </div>
+
+                <div class="header__search-center">
+                    <input type="text" placeholder="Search for anything" id="searchInput" />
+                </div>
+
+                <div class="header__search-right">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="~/Files/Images/loupe.svg" class="img" />
+                    </a>
+                </div>
+            </div>
+            <a href="/Home/Categories" class="button header__catalog-btn">
+                <img src=@Url.Content("~/Files/Images/Category.svg") class="img" />
+                <span>All Categories</span>
+            </a>
+            <a href="#" class="header__basket">
+                <img src=@Url.Content("~/Files/Images/box.svg") class="img" />
+            </a>
+            <div class="header__account">
+                <div>
+                    @Html.ActionLink("Sign in", "Index", "Home")
+                </div>
+                <div>
+                    @Html.ActionLink("Sign up", "Index", "Home")
+                </div>
+            </div>
+            <div class="header__burger">
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <div class="footer__body">
+            <div class="footer__section">
+                <div class="footer__copy">
+                    ITSTEP
+                    <div>
+                        &copy;2020 ITSTEP Corporation
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__section">
+                <div class="footer__title">
+                    Get to Know Us
+                </div>
+                <div class="footer__text">
+                    <a href="#">Link 1 Info Info InfoInfo</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link2Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link_3_Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 4 Info Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 5 Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 1 Info</a>
+                </div>
+            </div>
+
+            <div class="footer__section">
+                <div class="footer__title">
+                    For buyers
+                </div>
+                <div class="footer__text">
+                    <a href="#">Link 1 Info Info InfoInfo</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link2Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link_3_Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 4 Info Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 5 Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 1 Info</a>
+                </div>
+            </div>
+
+            <div class="footer__section">
+                <div class="footer__title">
+                    Contacts
+                </div>
+                <div class="footer__text">
+                    <a href="#">Link 1 Info Info InfoInfo</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link2Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link_3_Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 4 Info Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 5 Info</a>
+                </div>
+
+                <div class="footer__text">
+                    <a href="#">Link 1 Info</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <a href="#" onmouseout="querySelector('img').src='/Files/Images/facebook_white.svg'" onmouseover="querySelector('img').src='/Files/Images/facebook_orange.svg'">
+                <img src="~/Files/Images/facebook_white.svg" class="img" />
+            </a>
+
+            <a href="#" onmouseout="querySelector('img').src='/Files/Images/instagram_white.svg'" onmouseover="querySelector('img').src='/Files/Images/instagram_orange.svg'">
+                <img src="~/Files/Images/instagram_white.svg" class="img" />
+            </a>
+
+            <a href="#" onmouseout="querySelector('img').src='/Files/Images/twitter_white.svg'" onmouseover="querySelector('img').src='/Files/Images/twitter_orange.svg'">
+                <img src="~/Files/Images/twitter_white.svg" class="img" />
+            </a>
+
+            <a href="#" onmouseout="querySelector('img').src='/Files/Images/youtube_white.svg'" onmouseover="querySelector('img').src='/Files/Images/youtube_orange.svg'">
+                <img src="~/Files/Images/youtube_white.svg" class="img" />
+            </a>
+        </div>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
