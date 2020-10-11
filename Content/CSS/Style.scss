@@ -38,6 +38,10 @@ p::-webkit-scrollbar {
     justify-content: center;
     background-color: var(--def_color);
 
+    a {
+        color: var(--addit__color);
+    }
+
     &__body {
         position: relative;
         display: flex;
@@ -231,7 +235,7 @@ p::-webkit-scrollbar {
         background-color: transparent;
         width: 100%;
         height: 100%;
-        border:0;
+        border: 0;
     }
 }
 
@@ -365,6 +369,7 @@ p::-webkit-scrollbar {
 
     &__title {
         flex: 1;
+        color: var(--def_color);
 
         p {
             font-size: 20px;
@@ -565,7 +570,126 @@ p::-webkit-scrollbar {
     }
 }
 
+.good {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    word-break: break-word;
 
+    &__info {
+        display: flex;
+        flex: 0 0 500px;
+        height: 500px;
+        border-bottom: 1px solid gray;
+    }
+
+    &__comments {
+        display: flex;
+        flex: 1;
+        /*border: 1px solid gray;*/
+        margin-top: 100px;
+        min-height: 200px;
+    }
+
+    &__media {
+        display: flex;
+        height: 100%;
+        width: 50%;
+        padding: 3%;
+    }
+
+    &__preview {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__preview-block {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        width: 50%;
+        height: 100%;
+    }
+
+    &__images {
+        width: 120px;
+        height: 100%;
+        overflow: auto;
+        border-right: 1px solid lightgray;
+        padding-right: 15px;
+        margin-right: 15px;
+    }
+
+    &__image {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image-block {
+        width: 100%;
+        height: 80px;
+        margin: 10px 0;
+        border-radius: 5px;
+        padding: 5px;
+
+        &:hover {
+            border: 1px solid var(--def_color_hover);
+            padding: 4px;
+        }
+    }
+
+    &__title {
+        font-size: 28px;
+        margin: 10px 0 0 0;
+        color: var(--def_color);
+    }
+
+    &__category {
+        font-size: 18px;
+        margin: 0 5px 5px 5px;
+        color: orangered;
+    }
+
+    &__price {
+        font-size: 36px;
+        color: forestgreen;
+        margin-right: 30px;
+        font-family: Arial;
+    }
+
+    &__buy {
+        display: flex;
+        align-items: center;
+        margin: 0 0 20px 0;
+    }
+
+    &__button {
+        background-color: var(--def_color);
+        color: var(--addit__color);
+        font-size: 24px;
+        padding: 10px 30px;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: var(--def_color_hover);
+        }
+    }
+}
 
 .button {
     text-align: center;
@@ -602,7 +726,6 @@ p::-webkit-scrollbar {
 }
 
 a {
-    color: var(--addit__color);
     text-decoration: none;
 }
 

@@ -39,6 +39,8 @@ p::-webkit-scrollbar {
         height: 100%;
         background-color: $def_color;
     }*/ }
+  .header a {
+    color: var(--addit__color); }
   .header__body {
     position: relative;
     display: flex;
@@ -268,7 +270,8 @@ p::-webkit-scrollbar {
     color: #246d35;
     font-weight: bold; }
   .goods__title {
-    flex: 1; }
+    flex: 1;
+    color: var(--def_color); }
     .goods__title p {
       font-size: 20px;
       overflow: hidden;
@@ -417,6 +420,94 @@ p::-webkit-scrollbar {
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
       transition: .1s; }
 
+.good {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  word-break: break-word; }
+  .good__info {
+    display: flex;
+    flex: 0 0 500px;
+    height: 500px;
+    border-bottom: 1px solid gray; }
+  .good__comments {
+    display: flex;
+    flex: 1;
+    /*border: 1px solid gray;*/
+    margin-top: 100px;
+    min-height: 200px; }
+  .good__media {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    padding: 3%; }
+  .good__preview {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%; }
+  .good__preview-block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .good__description {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 50%;
+    height: 100%; }
+  .good__images {
+    width: 120px;
+    height: 100%;
+    overflow: auto;
+    border-right: 1px solid lightgray;
+    padding-right: 15px;
+    margin-right: 15px; }
+  .good__image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%; }
+  .good__image-block {
+    width: 100%;
+    height: 80px;
+    margin: 10px 0;
+    border-radius: 5px;
+    padding: 5px; }
+    .good__image-block:hover {
+      border: 1px solid var(--def_color_hover);
+      padding: 4px; }
+  .good__title {
+    font-size: 28px;
+    margin: 10px 0 0 0;
+    color: var(--def_color); }
+  .good__category {
+    font-size: 18px;
+    margin: 0 5px 5px 5px;
+    color: orangered; }
+  .good__price {
+    font-size: 36px;
+    color: forestgreen;
+    margin-right: 30px;
+    font-family: Arial; }
+  .good__buy {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0; }
+  .good__button {
+    background-color: var(--def_color);
+    color: var(--addit__color);
+    font-size: 24px;
+    padding: 10px 30px;
+    border-radius: 5px; }
+    .good__button:hover {
+      background-color: var(--def_color_hover); }
+
 .button {
   text-align: center;
   white-space: pre;
@@ -446,7 +537,6 @@ p::-webkit-scrollbar {
   justify-content: center; }
 
 a {
-  color: var(--addit__color);
   text-decoration: none; }
 
 input,

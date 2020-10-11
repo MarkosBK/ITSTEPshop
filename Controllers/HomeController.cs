@@ -82,9 +82,9 @@ namespace ASP_SHOP.Controllers
             return View(model: viewModel);
         }
 
-        public ActionResult GoodPage()
+        public ActionResult GoodPage(int selectedGood)
         {
-            return View();
+            return View(model: db.Goods.GetById(selectedGood));
         }
 
         public ActionResult Categories()

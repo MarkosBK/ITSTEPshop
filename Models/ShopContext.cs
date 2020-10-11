@@ -57,11 +57,11 @@ namespace ASP_SHOP.Models
             context.SaveChanges();
 
             ImageForGood img1 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 1 };
-            ImageForGood img2 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 1 };
+            ImageForGood img2 = new ImageForGood() { Title = "image1", Path = "/Files/Images/logo.jpg", IsLogo = false, GoodId = 1 };
             ImageForGood img3 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 1 };
-            ImageForGood img4 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 1 };
+            ImageForGood img4 = new ImageForGood() { Title = "image1", Path = "/Files/Images/logo.jpg", IsLogo = false, GoodId = 1 };
             ImageForGood img5 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 1 };
-            ImageForGood img6 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 2 };
+            ImageForGood img6 = new ImageForGood() { Title = "image1", Path = "/Files/Images/logo.jpg", IsLogo = false, GoodId = 1 };
             ImageForGood img7 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 3 };
             ImageForGood img8 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 4 };
             ImageForGood img9 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 5 };
@@ -72,7 +72,12 @@ namespace ASP_SHOP.Models
             ImageForGood img14 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 10 };
             ImageForGood img15 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 11 };
             ImageForGood img16 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 12 };
-            context.imagesForGoods.AddRange(new[] { img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16 });
+            ImageForGood img17 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 1 };
+            ImageForGood img18 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 1 };
+            ImageForGood img19 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = true, GoodId = 2 };
+            ImageForGood img20 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 2 };
+            ImageForGood img21 = new ImageForGood() { Title = "image1", Path = "/Files/Images/good.jpg", IsLogo = false, GoodId = 2 };
+            context.imagesForGoods.AddRange(new[] { img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20, img21 });
             context.SaveChanges();
             base.Seed(context);
         }

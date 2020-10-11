@@ -6,5 +6,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>GoodPage</h2>
+<div class="good">
+    <div class="good__info">
+        <div class="good__media">
+            <div class="good__images">
+                @foreach (ImageForGood item in Model.Images)
+                {
+                    <div class="good__image-block">
+                        <div class="good__image" style="background-image: url('@item.Path')"></div>
+                    </div>
+                }
 
+            </div>
+            <div class="good__preview-block">
+                <div class=" good__preview" style="background-image:url('@Model.Images.First(i=>i.IsLogo).Path')"></div>
+            </div>
+            
+        </div>
+        <div class="good__description">
+            <div class="good__buy">
+                <p class="good__price">@Model.Price$</p>
+                @Html.ActionLink("Buy","Index","Home",null,new { @class="good__button"})
+            </div>
+            
+            <div class="good__title">
+                @Model.Title
+            </div>
+            <div class="good__category">
+                @Model.Category.CategoryName
+            </div>
+        </div>
+    </div>
+
+    <div class="good__comments">
+
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".good__image").on("mouseover", function (e) {
+                $(".good__preview").css("backgroundImage", `${$(this).css("backgroundImage")}`);
+            });
+        })
+    </script>
+}
