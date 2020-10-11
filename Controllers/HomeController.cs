@@ -18,22 +18,30 @@ namespace ASP_SHOP.Controllers
         {
             this.db = db;
         }
-        public ActionResult Index(int page = 1, string[] checkboxes=null, SortState sortOrder = SortState.TitleAsc)
+        public ActionResult Index(int page = 1, string[] checkboxes=null, SortState sortOrder = SortState.TitleAsc, string searchString=null)
         {
             PageInfo pageInfo;
             List<Good> goods;
             int ItemsPerPage = 4;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                goods = db.Goods.GetList().Where(g => g.Category.CategoryName.ToLower().Contains(searchString.ToLower()) || g.Title.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+            else
+                goods = db.Goods.GetList().ToList();
             if (checkboxes == null)
             {
                 checkboxes = new string[] { };
-                goods = db.Goods.GetList().Skip((page - 1) * ItemsPerPage).Take(ItemsPerPage).ToList();
-                pageInfo = new PageInfo() { ItemsPerPage = ItemsPerPage, ItemsCount = db.Goods.GetList().Count(), PageNumber = page };
+                pageInfo = new PageInfo() { ItemsPerPage = ItemsPerPage, ItemsCount = goods.Count(), PageNumber = page };
+                goods = goods.Skip((page - 1) * ItemsPerPage).Take(ItemsPerPage).ToList();
             }
             else
             {
-                goods = db.Goods.GetList().Where(g => checkboxes.Contains(g.Category.CategoryName)).Skip((page - 1) * ItemsPerPage).Take(ItemsPerPage).ToList();
-                pageInfo = new PageInfo() { ItemsPerPage = ItemsPerPage, ItemsCount = db.Goods.GetList().Where(g => checkboxes.Contains(g.Category.CategoryName)).Count(), PageNumber = page };
+                pageInfo = new PageInfo() { ItemsPerPage = ItemsPerPage, ItemsCount = goods.Where(g => checkboxes.Contains(g.Category.CategoryName)).Count(), PageNumber = page };
+                goods = goods.Where(g => checkboxes.Contains(g.Category.CategoryName)).Skip((page - 1) * ItemsPerPage).Take(ItemsPerPage).ToList();
             }
+
 
             
             switch (sortOrder)
@@ -57,7 +65,7 @@ namespace ASP_SHOP.Controllers
                 PageInfo = pageInfo,
                 Categories = db.Categories.GetList(),
                 Goods = goods,
-                filterInfo = new Models.FilterInfo(checkboxes),
+                filterInfo = new Models.FilterInfo(checkboxes,searchString),
                 sortInfo = new SortInfo(sortOrder)
             };
             return View(model: viewModel);

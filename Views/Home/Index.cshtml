@@ -43,12 +43,12 @@
             {
                 if (@item == Model.sortInfo.Current)
                 {
-                    <option selected>@item</option>
+                    <option selected>@item.GetDisplayName()</option>
                 }
 
                 else
                 {
-                    <option>@item</option>
+                    <option>@item.GetDisplayName()</option>
                 }
 
 
@@ -62,12 +62,18 @@
 
     </div>
     <div class="filters__title">
-        F I L T E R S
+        F I L T E R S &nbsp; & &nbsp; S O R T
     </div>
 </form>
     <div class="container">
         <div class="pagination">
-            @Html.PageBuilder(Model.PageInfo, x => Url.Action("Index", new { page = x, checkboxes = Model.filterInfo.SelectedCategories.ToArray(), sortOrder=Model.sortInfo.Current}))
+            @Html.PageBuilder(Model.PageInfo,
+           x => Url.Action("Index", new {
+               page = x,
+               checkboxes = Model.filterInfo.SelectedCategories,
+               sortOrder=Model.sortInfo.Current,
+               searchString = Model.filterInfo.SearchString
+           }))
         </div>
         <div class="goods">
             @foreach (Good good in Model.Goods)

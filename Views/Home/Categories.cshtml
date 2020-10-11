@@ -5,8 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (Category item in Model)
-{
-    <div>@item.CategoryName</div>
-}
 
+<div class="container">
+    <div class="categories">
+        @foreach (Category item in Model)
+        {
+            <a class="categories__item" href="#">
+                <div class="categories__subitem">
+                    @item.CategoryName
+                </div>
+            </a>
+        }
+    </div>
+
+</div>

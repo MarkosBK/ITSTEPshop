@@ -8,11 +8,13 @@ namespace ASP_SHOP.Models
 {
     public class FilterInfo
     {
-        public FilterInfo(string[] selectedcategories=null)
+        public FilterInfo(string[] selectedcategories=null, string searchString=null)
         {
 
             SelectedCategories = selectedcategories;
+            SearchString = searchString;
         }
         public string[] SelectedCategories { get; private set; }   // выбранные категории
+        public string SearchString { get; private set; }  // строка поиска
     }
 }

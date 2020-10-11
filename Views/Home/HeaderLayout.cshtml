@@ -1,0 +1,54 @@
+﻿@using ASP_SHOP.Models
+@model HomeIndexViewModel
+
+
+    <header class="header">
+        <div class="header__body">
+            <div class="header__main">
+                <a href="/Home/Index" class="header__logo">
+                    <img src="~/Files/Images/logo.jpg" />
+                </a>
+                <div class="header__title">
+                    <a href="/Home/Index">ITSTEP</a>
+                </div>
+            </div>
+            <form class="header__search" action="/Home/Index">
+                <div class="header__search-left">
+                    <select>
+                        <option>option1</option>
+                        <option>option1option1</option>
+                        <option>option1option1</option>
+                        <option>option1</option>
+                        <option>option1</option>
+                    </select>
+                </div>
+
+                <div class="header__search-center">
+                    <input type="text" placeholder="Search for anything" id="searchInput" name="searchString" />
+                </div>
+
+                <div class="header__search-right">
+                    <input type="submit" class="header__submit" value="" />
+                </div>
+
+            </form>
+            <a href="/Home/Categories" class="button header__catalog-btn">
+                <img src=@Url.Content("~/Files/Images/Category.svg") class="img" />
+                <span>All Categories</span>
+            </a>
+            <a href="#" class="header__basket">
+                <img src=@Url.Content("~/Files/Images/box.svg") class="img" />
+            </a>
+            <div class="header__account">
+                <div>
+                    @Html.ActionLink("Sign in", "Index", "Home")
+                </div>
+                <div>
+                    @Html.ActionLink("Sign up", "Index", "Home")
+                </div>
+            </div>
+            <div class="header__burger">
+                <span></span>
+            </div>
+        </div>
+    </header>

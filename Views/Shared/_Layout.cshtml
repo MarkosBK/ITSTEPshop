@@ -27,7 +27,7 @@
                     <a href="/Home/Index">ITSTEP</a>
                 </div>
             </div>
-            <div class="header__search">
+            <form class="header__search" action="/Home/Index">
                 <div class="header__search-left">
                     <select>
                         <option>option1</option>
@@ -39,15 +39,14 @@
                 </div>
 
                 <div class="header__search-center">
-                    <input type="text" placeholder="Search for anything" id="searchInput" />
+                    <input type="text" placeholder="Search for anything" id="searchInput" name="searchString"/>
                 </div>
 
                 <div class="header__search-right">
-                    <a href="@Url.Action("Index", "Home")">
-                        <img src="~/Files/Images/loupe.svg" class="img" />
-                    </a>
+                    <input type="submit" class="header__submit" value="" />
                 </div>
-            </div>
+                
+            </form>
             <a href="/Home/Categories" class="button header__catalog-btn">
                 <img src=@Url.Content("~/Files/Images/Category.svg") class="img" />
                 <span>All Categories</span>
@@ -68,9 +67,12 @@
             </div>
         </div>
     </header>
+
+
     <div class="content">
         @RenderBody()
     </div>
+
 
     <footer class="footer">
         <div class="footer__body">
