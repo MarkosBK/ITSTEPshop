@@ -208,6 +208,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Home\HeaderLayout.cshtml" />
+    <Content Include="Views\Home\GoodPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

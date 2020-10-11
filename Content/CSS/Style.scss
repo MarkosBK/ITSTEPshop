@@ -309,7 +309,7 @@ p::-webkit-scrollbar {
     border-left: 1px solid lightgray;
     margin-left: 70px;
 
-    &__info {
+    &__item {
         position: relative;
         width: 25%;
         padding: 10px;
@@ -319,7 +319,7 @@ p::-webkit-scrollbar {
         height: 400px;
     }
 
-    &__item {
+    &__subitem {
         position: absolute;
         top: 0;
         left: 0;

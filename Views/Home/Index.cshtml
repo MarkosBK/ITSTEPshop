@@ -78,8 +78,8 @@
         <div class="goods">
             @foreach (Good good in Model.Goods)
             {
-            <div class="goods__info">
-                <div class="goods__item">
+            <div class="goods__item">
+                <div class="goods__subitem">
                     <div class="goods__preview" style="background-image:url('@good.Images.First(i=>i.IsLogo).Path')"></div>
                     <div class="goods__category">@Model.Categories.First(c => c.Id == good.CategoryId).CategoryName</div>
                     <div class="goods__title"><p>@good.Title</p></div>
@@ -89,7 +89,14 @@
             }
         </div>
         <div class="pagination">
-            @Html.PageBuilder(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+            @Html.PageBuilder(Model.PageInfo,
+           x => Url.Action("Index", new
+                {
+               page = x,
+               checkboxes = Model.filterInfo.SelectedCategories,
+               sortOrder = Model.sortInfo.Current,
+               searchString = Model.filterInfo.SearchString
+           }))
         </div>
     </div>
 

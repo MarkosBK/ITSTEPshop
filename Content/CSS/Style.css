@@ -225,7 +225,7 @@ p::-webkit-scrollbar {
   border-top: 1px solid lightgray;
   border-left: 1px solid lightgray;
   margin-left: 70px; }
-  .goods__info {
+  .goods__item {
     position: relative;
     width: 25%;
     padding: 10px;
@@ -233,7 +233,7 @@ p::-webkit-scrollbar {
     border-bottom: 1px solid lightgray;
     overflow: visible;
     height: 400px; }
-  .goods__item {
+  .goods__subitem {
     position: absolute;
     top: 0;
     left: 0;
@@ -246,12 +246,12 @@ p::-webkit-scrollbar {
     height: 100%;
     z-index: 0;
     padding: 10px; }
-    .goods__item:hover {
+    .goods__subitem:hover {
       border: 1px solid gray;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
       height: calc(100% + 80px);
       z-index: 10; }
-    .goods__item:hover .goods__title p {
+    .goods__subitem:hover .goods__title p {
       white-space: normal;
       word-break: break-word;
       overflow: auto; }

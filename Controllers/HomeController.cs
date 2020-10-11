@@ -18,11 +18,12 @@ namespace ASP_SHOP.Controllers
         {
             this.db = db;
         }
+        int ItemsPerPage = 4;
         public ActionResult Index(int page = 1, string[] checkboxes=null, SortState sortOrder = SortState.TitleAsc, string searchString=null)
         {
-            PageInfo pageInfo;
+            PageInfo pageInfo; 
             List<Good> goods;
-            int ItemsPerPage = 4;
+            
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -33,12 +34,22 @@ namespace ASP_SHOP.Controllers
             if (checkboxes == null)
             {
                 checkboxes = new string[] { };
-                pageInfo = new PageInfo() { ItemsPerPage = ItemsPerPage, ItemsCount = goods.Count(), PageNumber = page };
+                pageInfo = new PageInfo()
+                {
+                    ItemsPerPage = ItemsPerPage,
+                    ItemsCount = goods.Count(),
+                    PageNumber = page 
+                };
                 goods = goods.Skip((page - 1) * ItemsPerPage).Take(ItemsPerPage).ToList();
             }
             else
             {
-                pageInfo = new PageInfo() { ItemsPerPage = ItemsPerPage, ItemsCount = goods.Where(g => checkboxes.Contains(g.Category.CategoryName)).Count(), PageNumber = page };
+                pageInfo = new PageInfo()
+                { 
+                    ItemsPerPage = ItemsPerPage,
+                    ItemsCount = goods.Where(g => checkboxes.Contains(g.Category.CategoryName)).Count(),
+                    PageNumber = page 
+                };
                 goods = goods.Where(g => checkboxes.Contains(g.Category.CategoryName)).Skip((page - 1) * ItemsPerPage).Take(ItemsPerPage).ToList();
             }
 
@@ -70,30 +81,11 @@ namespace ASP_SHOP.Controllers
             };
             return View(model: viewModel);
         }
-        
-        //[HttpPost]
-        //public ActionResult Filter(int page=1, string[] checkboxes=null)
-        //{
-        //    int ItemsPerPage = 4;
 
-        //    if (checkboxes != null)
-        //    {
-        //        PageInfo pageInfo = new PageInfo() { ItemsPerPage = ItemsPerPage, ItemsCount = db.Goods.GetList().Where(g=>checkboxes.Contains(g.Category.CategoryName)).Count(), PageNumber = page };
-        //        HomeIndexViewModel viewModel = new HomeIndexViewModel()
-        //        {
-        //            PageInfo = pageInfo,
-        //            Categories = db.Categories.GetList(),
-        //            Goods = db.Goods.GetList().Where(g => checkboxes.Contains(g.Category.CategoryName)).Skip((page - 1) * ItemsPerPage).Take(ItemsPerPage)
-        //        };
-        //        return View("Index", model: viewModel);
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
-            
-
-        //}
+        public ActionResult GoodPage()
+        {
+            return View();
+        }
 
         public ActionResult Categories()
         {
