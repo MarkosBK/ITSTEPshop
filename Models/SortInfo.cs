@@ -34,6 +34,7 @@ namespace ASP_SHOP.Models
 
     public class SortInfo
     {
+        // сортировка товаров
         public SortState Current { get; private set; }     // текущее значение сортировки
 
         public SortInfo(SortState sortOrder)

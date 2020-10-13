@@ -26,7 +26,7 @@ namespace ASP_SHOP.Models
 
         public Good GetById(int id)
         {
-            return db.Goods.First(g => g.Id == id);
+            return db.Goods.FirstOrDefault(g => g.Id == id);
         }
 
         public IEnumerable<Good> GetList()

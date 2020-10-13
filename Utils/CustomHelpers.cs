@@ -22,10 +22,10 @@ namespace ASP_SHOP.Utils
                 tag.AddCssClass("button");
                 if (i == pageInfo.PageNumber)
                 {
-                    tag.AddCssClass("button--select");
+                    tag.AddCssClass("btn btn-light button--static");
                 }
                 else
-                    tag.AddCssClass("button--static");
+                    tag.AddCssClass("btn btn-dark button--static");
                 builder.Append(tag.ToString());
             }
 

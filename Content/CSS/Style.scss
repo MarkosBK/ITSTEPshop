@@ -156,34 +156,10 @@ p::-webkit-scrollbar {
         }
     }
 
+
     &__search-left {
-        display: flex;
-        flex: 0 0 40px;
-        margin-right: 10px;
-        background-color: var(--def_color_hover);
-        border: 1px solid var(--addit__color);
-        border-radius: 5px 0 0 5px;
-        align-items: stretch;
-
-        select {
-            background-color: var(--def_color_hover);
-            border: 0;
-            border-radius: 5px 0 0 5px;
-            line-height: 40px;
-            color: var(--addit__color);
-            font-size: 16px;
-            font-family: Arial;
-            font-weight: bold;
-
-            option {
-                height: 50px;
-                padding: 10px;
-            }
-        }
-    }
-
-    &__search-center {
         flex: 1;
+        padding-left: 20px;
     }
 
     &__search-right {
@@ -678,16 +654,16 @@ p::-webkit-scrollbar {
         margin: 0 0 20px 0;
     }
 
-    &__button {
-        background-color: var(--def_color);
-        color: var(--addit__color);
-        font-size: 24px;
-        padding: 10px 30px;
-        border-radius: 5px;
+    &__buy-active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 0 20px 0;
+    }
 
-        &:hover {
-            background-color: var(--def_color_hover);
-        }
+    &__button {
+        padding: 10px 20px;
+        font-size: 20px;
     }
 }
 
@@ -697,24 +673,8 @@ p::-webkit-scrollbar {
     transition: .1s;
 }
 
-.button--select {
-    background-color: var(--addit__color);
-    color: var(--def_color);
-    border-right: 1px solid #fff;
-    padding: 8px 12px;
-    font-size: 24px;
-}
-
 .button--static {
-    border-right: 1px solid #fff;
-    background-color: var(--def_color);
-    color: #fff;
-    font-size: 24px;
-    padding: 5px 10px;
-
-    &:last-child {
-        border: 0;
-    }
+    padding: 8px 16px;
 }
 
 .pagination {
@@ -727,6 +687,10 @@ p::-webkit-scrollbar {
 
 a {
     text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 input,
@@ -755,4 +719,17 @@ textarea {
 
 body {
     font-family: 'Roboto', sans-serif;
+}
+
+label,p{
+    margin: 0;
+    padding: 0;
+}
+
+tbody{
+    font-size: 20px;
+}
+
+thead, tfoot{
+    font-size: 24px;
 }

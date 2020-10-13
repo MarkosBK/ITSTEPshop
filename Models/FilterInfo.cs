@@ -8,6 +8,7 @@ namespace ASP_SHOP.Models
 {
     public class FilterInfo
     {
+        // фильтрация товаров
         public FilterInfo(string[] selectedcategories=null, string searchString=null)
         {
 

@@ -118,27 +118,8 @@ p::-webkit-scrollbar {
     .header__search input:focus::-webkit-input-placeholder {
       color: transparent; }
   .header__search-left {
-    display: flex;
-    flex: 0 0 40px;
-    margin-right: 10px;
-    background-color: var(--def_color_hover);
-    border: 1px solid var(--addit__color);
-    border-radius: 5px 0 0 5px;
-    align-items: stretch; }
-    .header__search-left select {
-      background-color: var(--def_color_hover);
-      border: 0;
-      border-radius: 5px 0 0 5px;
-      line-height: 40px;
-      color: var(--addit__color);
-      font-size: 16px;
-      font-family: Arial;
-      font-weight: bold; }
-      .header__search-left select option {
-        height: 50px;
-        padding: 10px; }
-  .header__search-center {
-    flex: 1; }
+    flex: 1;
+    padding-left: 20px; }
   .header__search-right {
     flex: 0 0 60px;
     background-image: url("/Files/Images/loupe.svg");
@@ -499,35 +480,31 @@ p::-webkit-scrollbar {
     display: flex;
     align-items: center;
     margin: 0 0 20px 0; }
+  .good__buy-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 20px 0; }
   .good__button {
-    background-color: var(--def_color);
-    color: var(--addit__color);
+    padding: 10px 20px;
+    font-size: 20px; }
+  .good__button-active {
+    background-color: #fff;
+    color: var(--def_color);
     font-size: 24px;
     padding: 10px 30px;
-    border-radius: 5px; }
-    .good__button:hover {
-      background-color: var(--def_color_hover); }
+    border-radius: 5px;
+    border: 1px solid var(--def_color_hover); }
+    .good__button-active:hover {
+      background-color: var(--addit__color); }
 
 .button {
   text-align: center;
   white-space: pre;
   transition: .1s; }
 
-.button--select {
-  background-color: var(--addit__color);
-  color: var(--def_color);
-  border-right: 1px solid #fff;
-  padding: 8px 12px;
-  font-size: 24px; }
-
 .button--static {
-  border-right: 1px solid #fff;
-  background-color: var(--def_color);
-  color: #fff;
-  font-size: 24px;
-  padding: 5px 10px; }
-  .button--static:last-child {
-    border: 0; }
+  padding: 8px 16px; }
 
 .pagination {
   margin: 20px auto;
@@ -538,6 +515,8 @@ p::-webkit-scrollbar {
 
 a {
   text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
 
 input,
 select,
@@ -561,3 +540,13 @@ textarea {
 
 body {
   font-family: 'Roboto', sans-serif; }
+
+label, p {
+  margin: 0;
+  padding: 0; }
+
+tbody {
+  font-size: 20px; }
+
+thead, tfoot {
+  font-size: 24px; }

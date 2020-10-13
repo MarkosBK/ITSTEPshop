@@ -1,5 +1,7 @@
-﻿using ASP_SHOP.Models;
+﻿using ASP_SHOP.App_Start;
+using ASP_SHOP.Models;
 using ASP_SHOP.Utils;
+using ASP_SHOP.Utils.Binders;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,6 +21,8 @@ namespace ASP_SHOP
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             Database.SetInitializer(new MyInitializer());
             AutofacRegistration.RegisterContainer();
+            BundleConfig.RegisterBundle(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }

@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-
-    <link href=@Url.Content("~/Content/CSS/Style.css") rel="stylesheet" />
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/CSS/css")
+    @Scripts.Render("~/bundles/modernizr")
     @*font-family: 'Roboto', sans-serif;*@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     @*font-family: 'Fredoka One', cursive;*@
@@ -28,30 +30,21 @@
                 </div>
             </div>
             <form class="header__search" action="/Home/Index">
-                <div class="header__search-left">
-                    <select>
-                        <option>option1</option>
-                        <option>option1option1</option>
-                        <option>option1option1</option>
-                        <option>option1</option>
-                        <option>option1</option>
-                    </select>
-                </div>
 
-                <div class="header__search-center">
-                    <input type="text" placeholder="Search for anything" id="searchInput" name="searchString"/>
+                <div class="header__search-left">
+                    <input type="text" placeholder="Search for anything" id="searchInput" name="searchString" />
                 </div>
 
                 <div class="header__search-right">
                     <input type="submit" class="header__submit" value="" />
                 </div>
-                
+
             </form>
             <a href="/Home/Categories" class="button header__catalog-btn">
                 <img src=@Url.Content("~/Files/Images/Category.svg") class="img" />
                 <span>All Categories</span>
             </a>
-            <a href="#" class="header__basket">
+            <a href="/Cart/Index" class="header__basket">
                 <img src=@Url.Content("~/Files/Images/box.svg") class="img" />
             </a>
             <div class="header__account">
@@ -191,5 +184,7 @@
         </div>
     </footer>
     @RenderSection("Scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+
 </body>
 </html>

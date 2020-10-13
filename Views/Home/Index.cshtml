@@ -1,104 +1,109 @@
 ﻿@using ASP_SHOP.Models
 @using ASP_SHOP.Utils
-@model HomeIndexViewModel 
+@model HomeIndexViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form class="filters" action="/Home/Index">
-    <div class="filters__categories">
-        <img src="~/Files/Images/computer_dark.svg" class="img"/>
-        <img src="~/Files/Images/smartphones_dark.svg" class="img"/>
-        <img src="~/Files/Images/washer_dark.svg" class="img"/>
-        <img src="~/Files/Images/bath_dark.svg" class="img"/>
-        <img src="~/Files/Images/drill_dark.svg" class="img"/>
-        <img src="~/Files/Images/tools_dark.svg" class="img"/>
-        <img src="~/Files/Images/sofa_dark.svg" class="img"/>
-        <img src="~/Files/Images/badminton_dark.svg" class="img"/>
-        <img src="~/Files/Images/stationery_dark.svg" class="img"/>
-        <img src="~/Files/Images/clothes_dark.svg" class="img"/>
-    </div>
-    <div class="filters__text">
-        <div class="filters__header">
-            FILTERS
+    <form class="filters" action="/Home/Index">
+        <div class="filters__categories">
+            <img src="~/Files/Images/computer_dark.svg" class="img" />
+            <img src="~/Files/Images/smartphones_dark.svg" class="img" />
+            <img src="~/Files/Images/washer_dark.svg" class="img" />
+            <img src="~/Files/Images/bath_dark.svg" class="img" />
+            <img src="~/Files/Images/drill_dark.svg" class="img" />
+            <img src="~/Files/Images/tools_dark.svg" class="img" />
+            <img src="~/Files/Images/sofa_dark.svg" class="img" />
+            <img src="~/Files/Images/badminton_dark.svg" class="img" />
+            <img src="~/Files/Images/stationery_dark.svg" class="img" />
+            <img src="~/Files/Images/clothes_dark.svg" class="img" />
         </div>
-        <ul>
-            @foreach (Category item in Model.Categories)
-            {
-                <li>
-                    <div>
-                        <input type="checkbox" value="@item.CategoryName" class="filters__checkbox" , id="@item.Id" name="checkboxes" checked="@Model.filterInfo.SelectedCategories.Contains(item.CategoryName)" />
-                        <label for="@item.Id"><p>@item.CategoryName</p></label>
-                    </div>
-                </li>
-            }
-        </ul>
 
-        <div class="filters__header">
-            SORT
-        </div>
-        <select class="filters__select" name="sortOrder">
-            @foreach (SortState item in Enum.GetValues(typeof(SortState)))
+        @*Pagination*@
+        @{
+            string BuildUrl(int page)
             {
-                if (@item == Model.sortInfo.Current)
+                var parameters = new RouteValueDictionary();
+                for (int i = 0; i < Model.filterInfo.SelectedCategories.Length; i++)
                 {
-                    <option selected>@item.GetDisplayName()</option>
+                    parameters.Add($"checkboxes[{i}]", Model.filterInfo.SelectedCategories[i]);
                 }
-
-                else
-                {
-                    <option>@item.GetDisplayName()</option>
-                }
-
-
+                parameters.Add("page", page);
+                parameters.Add("sortOrder", Model.sortInfo.Current);
+                parameters.Add("searchString", Model.filterInfo.SearchString);
+                return Url.Action("Index", parameters);
             }
-        </select>
+        }
 
-        <div class="filters__submit">
-            <input type="submit" class="button" value="FIND" />
-            @Html.ActionLink("SHOW ALL", "Index", "Home",null, new { @class = "button" })
-        </div>
 
-    </div>
-    <div class="filters__title">
-        F I L T E R S &nbsp; & &nbsp; S O R T
-    </div>
-</form>
-    <div class="container">
-        <div class="pagination">
-            @Html.PageBuilder(Model.PageInfo,
-           x => Url.Action("Index", new {
-               page = x,
-               checkboxes = Model.filterInfo.SelectedCategories,
-               sortOrder=Model.sortInfo.Current,
-               searchString = Model.filterInfo.SearchString
-           }))
+        <div class="filters__text">
+            <div class="filters__header">
+                FILTERS
+            </div>
+            <ul>
+                @foreach (Category item in Model.Categories)
+                {
+                    <li>
+                        <div>
+                            <input type="checkbox" value="@item.CategoryName" class="filters__checkbox" , id="@item.Id" name="checkboxes" checked="@Model.filterInfo.SelectedCategories.Contains(item.CategoryName)" />
+                            <label for="@item.Id"><p>@item.CategoryName</p></label>
+                        </div>
+                    </li>
+                }
+            </ul>
+
+            <div class="filters__header">
+                SORT
+            </div>
+            <select class="filters__select" name="sortOrder">
+                @foreach (SortState item in Enum.GetValues(typeof(SortState)))
+                {
+                    if (@item == Model.sortInfo.Current)
+                    {
+                        <option value="@item" selected>@item.GetDisplayName()</option>
+                    }
+
+                    else
+                    {
+                        <option value="@item">@item.GetDisplayName()</option>
+                    }
+
+
+                }
+            </select>
+
+            <div class="filters__submit">
+                <input type="submit" class="button" value="FIND" />
+                @Html.ActionLink("SHOW ALL", "Index", "Home", null, new { @class = "button" })
+            </div>
+
         </div>
-        <div class="goods">
-            @foreach (Good good in Model.Goods)
-            {
-            <a class="goods__item" href="@Url.Action("GoodPage","Home", new { selectedGood = good.Id})">
+        <div class="filters__title">
+            F I L T E R S &nbsp; & &nbsp; S O R T
+        </div>
+    </form>
+<div class="container">
+    <div class="pagination">
+        @Html.PageBuilder(Model.PageInfo, x => BuildUrl(x))
+    </div>
+    <div class="goods">
+        @foreach (Good good in Model.Goods)
+        {
+            <a class="goods__item" href="@Url.Action("GoodPage", "Home", new { selectedGood = good.Id })">
                 <div class="goods__subitem">
-                    <div class="goods__preview" style="background-image:url('@good.Images.First(i=>i.IsLogo).Path')"></div>
+                    <div class="goods__preview" style="background-image:url('@good.Images.First(i => i.IsLogo).Path')"></div>
                     <div class="goods__category">@Model.Categories.First(c => c.Id == good.CategoryId).CategoryName</div>
                     <div class="goods__title"><p>@good.Title</p></div>
                     <div class="goods__price">@good.Price$</div>
                 </div>
             </a>
-            }
-        </div>
-        <div class="pagination">
-            @Html.PageBuilder(Model.PageInfo,
-           x => Url.Action("Index", new
-                {
-               page = x,
-               checkboxes = Model.filterInfo.SelectedCategories,
-               sortOrder = Model.sortInfo.Current,
-               searchString = Model.filterInfo.SearchString
-           }))
-        </div>
+        }
     </div>
+    <div class="pagination">
+        @Html.PageBuilder(Model.PageInfo, x => BuildUrl(x))
+    </div>
+</div>
 
 @section Scripts{
     <script type="text/javascript">
@@ -117,8 +122,8 @@
                         $(".filters__text").hide();
                     }
                 }
-                
+
             })
         })
     </script>
-    }
+}

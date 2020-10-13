@@ -26,7 +26,26 @@
         <div class="good__description">
             <div class="good__buy">
                 <p class="good__price">@Model.Price$</p>
-                @Html.ActionLink("Buy","Index","Home",null,new { @class="good__button"})
+                @if (Session["Cart"] != null)
+                {
+                    if ((Session["Cart"] as Cart).CartItems.Select(c => c.Good.Id).Contains(Model.Id))
+                    {
+                        <div class="good__buy-active">
+                            <p>This good added to cart</p>
+                            @Html.ActionLink("Delete from cart", "DeleteFromCart", "Cart", new { id = Model.Id, backURL = Request.Url.PathAndQuery }, new { @class = "btn btn-light good__button" })
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = Model.Id, backURL = Request.Url.PathAndQuery }, new { @class = "btn btn-dark good__button" })
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = Model.Id, backURL = Request.Url.PathAndQuery }, new { @class = "btn btn-dark good__button" })
+                }
+
+
             </div>
             
             <div class="good__title">
