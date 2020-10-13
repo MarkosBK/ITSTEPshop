@@ -488,15 +488,6 @@ p::-webkit-scrollbar {
   .good__button {
     padding: 10px 20px;
     font-size: 20px; }
-  .good__button-active {
-    background-color: #fff;
-    color: var(--def_color);
-    font-size: 24px;
-    padding: 10px 30px;
-    border-radius: 5px;
-    border: 1px solid var(--def_color_hover); }
-    .good__button-active:hover {
-      background-color: var(--addit__color); }
 
 .button {
   text-align: center;
