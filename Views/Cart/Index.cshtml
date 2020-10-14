@@ -1,54 +1,17 @@
-﻿@using ASP_SHOP.Models 
+﻿@using ASP_SHOP.Models
 @model Cart
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @for (int i = 0; i < Model.CartItems.Count(); i++)
-                {
-                    CartItem item = Model.CartItems.ToList()[i];
-                    <tr>
-                        <th scope="row">@(i+1).</th>
-                        <td>@item.Good.Title</td>
-                        <td>@item.Quantity</td>
-                        <td>@item.Good.Price$</td>
-                        <td>@(item.Good.Price*item.Quantity)$</td>
-                        <td>
-                            @Html.ActionLink(
-                       "Delete",
-                       "DeleteFromCart",
-                       new { id = item.Good.Id, backURL = Request.Url.PathAndQuery },
-                       new { @class = "btn btn-dark" })
-                    </td>
-                </tr>
-            }
-            </tbody>
-
-            <tfoot class="">
-                <tr>
-                    <td colspan="5" class="text-right">Total price:</td>
-                    <td class="text-left">@Model.CalculateTotalPrice()$</td>
-                </tr>
-            </tfoot>
-        </table>
-        <div style="font-size: 26px; padding: 10px 30px;" class="text-right">
-            @Html.ActionLink("Checkout","Home","Index",new { @class="btn btn-dark btn-lg"})
-        </div>
+<div class="container">
+    @Html.Partial("Cart")
+    <div style="font-size: 26px; padding: 10px 30px;" class="text-right">
+        @Html.ActionLink("Checkout", "Home", "Index", new { @class = "btn btn-dark btn-lg" })
     </div>
-
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
 

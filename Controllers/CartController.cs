@@ -28,11 +28,11 @@ namespace ASP_SHOP.Controllers
             return Redirect(backURL);
         }
         
-        public ActionResult DeleteFromCart(int id, string backURL, Cart cart)
+        public ActionResult DeleteFromCart(int id, Cart cart)
         {
             Good good = db.Goods.GetById(id);
             cart.RemoveItem(good);
-            return Redirect(backURL);
+            return PartialView("Cart", cart);
         }
     }
 }
