@@ -90,7 +90,7 @@
     <div class="goods">
         @foreach (Good good in Model.Goods)
         {
-            <a class="goods__item" href="@Url.Action("GoodPage", "Home", new { selectedGood = good.Id })">
+            <a class="goods__item" href="@Url.Action("GoodPage", "Cart", new { selectedGood = good.Id })">
                 <div class="goods__subitem">
                     <div class="goods__preview" style="background-image:url('@good.Images.First(i => i.IsLogo).Path')"></div>
                     <div class="goods__category">@Model.Categories.First(c => c.Id == good.CategoryId).CategoryName</div>

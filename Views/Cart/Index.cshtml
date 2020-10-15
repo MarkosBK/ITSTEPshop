@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
+<div class="container" id="partialView">
     @Html.Partial("Cart")
-    <div style="font-size: 26px; padding: 10px 30px;" class="text-right">
-        @Html.ActionLink("Checkout", "Home", "Index", new { @class = "btn btn-dark btn-lg" })
-    </div>
 </div>
 @section Scripts{
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")

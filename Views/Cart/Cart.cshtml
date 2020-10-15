@@ -18,18 +18,18 @@
         {
             CartItem item = Model.CartItems.ToList()[i];
             <tr>
-                <th scope="row">@(i+1).</th>
+                <th scope="row">@(i + 1).</th>
                 <td>@item.Good.Title</td>
                 <td>@item.Quantity</td>
                 <td>@item.Good.Price$</td>
-                <td>@(item.Good.Price*item.Quantity)$</td>
+                <td>@(item.Good.Price * item.Quantity)$</td>
                 <td>
                     @Ajax.ActionLink(
                "Delete",
                "DeleteFromCart",
                "Cart",
                new { id = item.Good.Id },
-               new AjaxOptions { UpdateTargetId = "ShoppingCart", HttpMethod = "get" },
+               new AjaxOptions { UpdateTargetId = "partialView" },
                new { @class = "btn btn-dark" })
                 </td>
             </tr>
@@ -43,6 +43,10 @@
         </tr>
     </tfoot>
 </table>
+
+<div style="font-size: 26px; padding: 10px 30px;" class="text-right">
+    @Html.ActionLink("Checkout", "Home", "Index", new { @class = "btn btn-dark btn-lg" })
+</div>
 
 @section Scripts{
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")

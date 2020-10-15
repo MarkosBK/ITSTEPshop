@@ -18,7 +18,7 @@ namespace ASP_SHOP.Controllers
         {
             this.db = db;
         }
-        int ItemsPerPage = 4;
+        int ItemsPerPage = 6;
         public ActionResult Index(int page = 1, string[] checkboxes=null, SortState sortOrder = SortState.TitleAsc, string searchString=null)
         {
             // главная страница (страница с товарами)
@@ -81,12 +81,6 @@ namespace ASP_SHOP.Controllers
                 sortInfo = new SortInfo(sortOrder)
             };
             return View(model: viewModel);
-        }
-
-        public ActionResult GoodPage(int selectedGood)
-        {
-            // страница с выбранным товаром
-            return View(model: db.Goods.GetById(selectedGood));
         }
 
         public ActionResult Categories()

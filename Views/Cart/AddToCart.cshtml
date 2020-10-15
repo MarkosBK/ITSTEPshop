@@ -1,0 +1,37 @@
+﻿@using ASP_SHOP.Models
+@model Good
+@if (Session["Cart"] != null)
+{
+    if ((Session["Cart"] as Cart).CartItems.Select(c => c.Good.Id).Contains(Model.Id))
+    {
+        <div class="good__buy-active">
+            <p>This good added to cart</p>
+            @Ajax.ActionLink(
+           "Delete from cart",
+           "DeleteFromCartButton",
+           "Cart",
+           new { id = Model.Id },
+           new AjaxOptions { UpdateTargetId = "BuyButtonDiv" },
+           new { @class = "btn btn-light good__button" })
+        </div>
+    }
+    else
+    {
+        @Ajax.ActionLink("Add to cart",
+        "AddToCart",
+        "Cart",
+        new { id = Model.Id },
+        new AjaxOptions { UpdateTargetId = "BuyButtonDiv" },
+        new { @class = "btn btn-dark good__button" })
+    }
+}
+else
+{
+    @Ajax.ActionLink("Add to cart",
+    "AddToCart",
+    "Cart",
+    new { id = Model.Id },
+    new AjaxOptions { UpdateTargetId = "BuyButtonDiv" },
+    new { @class = "btn btn-dark good__button" })
+}
+
