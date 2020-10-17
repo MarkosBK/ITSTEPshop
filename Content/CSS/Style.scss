@@ -38,6 +38,16 @@ p::-webkit-scrollbar {
     justify-content: center;
     background-color: var(--def_color);
 
+    #navbar, .navbar-nav {
+        height: 100%;
+        flex: 1;
+    }
+
+    #navbar, .nav-item {
+        display: flex;
+        align-items: center;
+    }
+
     a {
         color: var(--addit__color);
     }
@@ -143,12 +153,13 @@ p::-webkit-scrollbar {
             border: 1px solid gray;
         }
 
-        input[type="text"] {
+        input[type="search"] {
             height: 100%;
             background-color: #eee;
             border: 0;
             font-size: 20px;
             width: 100%;
+            padding-right: 2%;
         }
 
         input:focus::-webkit-input-placeholder {

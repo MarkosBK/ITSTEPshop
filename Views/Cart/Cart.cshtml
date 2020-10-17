@@ -20,7 +20,7 @@
             <tr>
                 <th scope="row">@(i + 1).</th>
                 <td>@item.Good.Title</td>
-                <td>@item.Quantity</td>
+                <td><input onkeydown="return false" type="number" value="@item.Quantity" min="1" style="width: 100px"/></td> @*max="@item.count"*@
                 <td>@item.Good.Price$</td>
                 <td>@(item.Good.Price * item.Quantity)$</td>
                 <td>
@@ -50,4 +50,5 @@
 
 @section Scripts{
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
 }
